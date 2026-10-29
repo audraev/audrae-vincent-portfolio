@@ -9,11 +9,13 @@ The site is plain HTML, CSS, and JavaScript in `dist/`. The workflow in `.github
 - The [first Pages deployment](https://github.com/audraev/audrae-vincent-portfolio/actions/runs/40815079416) completed successfully on October 28, 2026.
 - **Settings → Pages → Custom domain** is already set to `audraevincent.com`. A custom Actions workflow uses this setting; a `CNAME` file alone does not configure the domain.
 
-The remaining setup is Namecheap DNS followed by the HTTPS check below. Updating files in `dist/` and pushing to `main` deploys future site changes automatically. Documentation-only commits do not trigger a deployment.
+The domain setup is complete. The public portfolio is at [https://audraevincent.com/](https://audraevincent.com/). GitHub has approved its HTTPS certificate and HTTPS enforcement is enabled. The secure `www` address redirects to the primary domain. DNS and secure responses were verified on October 28, 2026.
+
+Updating files in `dist/` and pushing to `main` deploys future site changes automatically. Documentation-only commits do not trigger a deployment.
 
 ## Namecheap DNS
 
-Open **Domain List → Manage** next to `audraevincent.com`, then **Advanced DNS → Host Records**. The domain currently uses Namecheap nameservers. Replace the parking/redirect records for `@` and `www` with the following. Preserve unrelated email and domain verification records.
+The following records are configured in **Domain List → Manage** next to `audraevincent.com`, then **Advanced DNS → Host Records**. The domain uses Namecheap nameservers. Preserve unrelated email and domain verification records when maintaining this configuration.
 
 | Type | Host | Value | TTL |
 | --- | --- | --- | --- |
@@ -25,7 +27,7 @@ Open **Domain List → Manage** next to `audraevincent.com`, then **Advanced DNS
 
 The `www` target is the GitHub username's domain, without a repository path. GitHub redirects `www.audraevincent.com` to the configured primary address, `audraevincent.com`.
 
-Once GitHub's DNS check passes and the certificate is issued, enable **Enforce HTTPS** in **Settings → Pages**. DNS and certificate provisioning may take up to 24 hours. Verify both addresses and the project navigation before using the URL on a resume.
+**Enforce HTTPS** is enabled in **Settings → Pages**. After future DNS changes, allow time for cached records to refresh and verify both domain addresses.
 
 ## Optional domain ownership verification
 
