@@ -51,7 +51,7 @@ function createArrowIcon(direction = 'up-right') {
   };
   Object.entries(attributes).forEach(([name, value]) => icon.setAttribute(name, value));
   const path = document.createElementNS(namespace, 'path');
-  const paths = { 'up-right': 'M6 18 18 6M6 6h12v12', left: 'M20 12H4m7-7-7 7 7 7', right: 'M4 12h16m-7-7 7 7-7 7' };
+  const paths = { 'up-right': 'M6 18 18 6M6 6h12v12', left: 'M20 12H4m7-7-7 7 7 7', right: 'M4 12h16m-7-7 7 7-7 7', down: 'M12 4v16m-7-7 7 7 7-7' };
   path.setAttribute('d', paths[direction] || paths['up-right']);
   icon.append(path);
   return icon;
@@ -94,7 +94,8 @@ function createProjectGallery(project) {
 
   const toolbar = document.createElement('div');
   toolbar.className = 'gallery-toolbar';
-  const hint = textElement('span', 'Browse the project', 'gallery-hint');
+  const hint = textElement('span', 'Scroll for project details', 'gallery-hint');
+  hint.append(createArrowIcon('down'));
   const controls = document.createElement('div');
   controls.className = 'gallery-controls';
   const previous = document.createElement('button');
@@ -123,7 +124,7 @@ function createProjectGallery(project) {
     button.className = 'gallery-thumbnail';
     button.setAttribute('aria-label', `Show slide ${index + 1}: ${slide.title}`);
     const thumbnail = document.createElement('img');
-    thumbnail.src = `assets/projects/${slide.image}`;
+    thumbnail.src = `assets/projects/${slide.image}?v=clean-framing-2`;
     thumbnail.alt = '';
     thumbnail.width = 128;
     thumbnail.height = 80;
@@ -139,7 +140,7 @@ function createProjectGallery(project) {
     const slide = project.slides[current];
     error.hidden = true;
     image.hidden = false;
-    image.src = `assets/projects/${slide.image}`;
+    image.src = `assets/projects/${slide.image}?v=clean-framing-2`;
     image.alt = slide.alt;
     number.textContent = `SCREEN ${String(current + 1).padStart(2, '0')} / ${String(project.slides.length).padStart(2, '0')}`;
     title.textContent = slide.title;

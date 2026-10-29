@@ -16,7 +16,7 @@ Run `node preview.mjs` and open http://127.0.0.1:4173.
 - `dist/app.js`: project walkthrough slides, detail notes, GitHub links, filters and navigation.
 - `dist/style.css`: responsive styling and print layout.
 - `dist/gallery.css`: responsive screenshot gallery and project-dialog styling.
-- `dist/assets/projects/`: seven actual project screenshots captured from isolated local previews at 1280 × 800, saved as JPEGs.
+- `dist/assets/projects/`: seven actual project screenshots captured from isolated local previews with browser scrollbars hidden, saved as JPEGs. Most are 1280 × 800; the complete IoT workspace is framed at 1127 × 890.
 
 Project descriptions were checked against the fetched GitHub `origin/main` sources on October 28, 2026. The walkthrough screenshots show Fitness Vault at `c262e9d73b63bac515dc8dda642c5a7ee06c97ae` and ARTHEON at `60cde26fc967f048402f688b7e15d803c045e893`. Existing project working files were not modified. The landing-page project illustrations remain interface studies; the popup galleries contain actual screenshots with sample or fictional development data. Professional responsibilities beyond the supplied role descriptions have not been assumed. The experience overview can be printed or saved as PDF using the browser print dialog.
 

@@ -23,7 +23,7 @@
 .project-gallery { min-width: 0; border-radius: 7px; }
 .project-gallery:focus-visible { outline: 2px solid var(--orange); outline-offset: 6px; }
 .project-slide { margin: 0; }
-.slide-image-wrap { position: relative; overflow: hidden; aspect-ratio: 8 / 5; border: 1px solid #bfc9b8; border-radius: 7px; background: #0b1628; touch-action: pan-y pinch-zoom; }
+.slide-image-wrap { position: relative; overflow: hidden; width: 100%; max-width: 880px; max-height: 44vh; max-height: 44dvh; margin-inline: auto; aspect-ratio: 8 / 5; border: 1px solid #bfc9b8; border-radius: 7px; background: #0b1628; touch-action: pan-y pinch-zoom; }
 .slide-image { display: block; width: 100%; height: 100%; object-fit: contain; user-select: none; -webkit-user-select: none; }
 .slide-image[hidden], .slide-error[hidden] { display: none; }
 .slide-error { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; padding: 25px; color: #eee; font-size: 14px; }
@@ -32,7 +32,7 @@
 .slide-caption h3 { font: 600 23px / 1.3 var(--display); letter-spacing: -.7px; margin: 0 0 8px; }
 .slide-caption > p:last-child { color: var(--muted); font-size: 13px; max-width: 730px; line-height: 1.8; margin: 0; }
 .gallery-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 15px; margin-top: 15px; padding-block: 10px 15px; border-bottom: 1px solid var(--line); }
-.gallery-hint { color: var(--muted); font-size: 11px; }
+.gallery-hint { display: inline-flex; align-items: center; gap: 7px; color: var(--muted); font-size: 11px; }
 .gallery-controls { position: absolute; left: 12px; right: 12px; top: 50%; transform: translateY(-50%); display: flex; align-items: center; justify-content: space-between; pointer-events: none; }
 .gallery-arrow { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid #bdc8b7; border-radius: 50%; background: #f5f4edf2; color: var(--ink); font-size: 19px; pointer-events: auto; box-shadow: 0 2px 10px #0002; }
 .gallery-arrow:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
@@ -63,6 +63,7 @@
   .project-dialog-heading { grid-template-columns: 1fr; gap: 12px; margin-bottom: 20px; }
   .project-dialog-heading .dialog-title { font-size: 28px; }
   .project-dialog-heading .dialog-description { font-size: 12px; line-height: 1.7; }
+  .slide-image-wrap { width: 94%; }
   .slide-caption { padding-top: 18px; min-height: 0; }
   .slide-caption h3 { font-size: 20px; }
   .slide-caption > p:last-child { font-size: 12px; }
