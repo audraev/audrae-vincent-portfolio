@@ -2,12 +2,14 @@
 
 The site is plain HTML, CSS, and JavaScript in `dist/`. The workflow in `.github/workflows/deploy-pages.yml` publishes that directory when updates are pushed to `main`. No build command or package installation is required.
 
-## GitHub setup
+## GitHub setup — completed
 
-1. Create a public repository under `audraev` for this portfolio and push this source to its `main` branch. The planned repository name is `audrae-vincent-portfolio`; check that this name is available before creating it.
-2. In the repository's **Settings → Pages**, set **Source** to **GitHub Actions**.
-3. Run **Actions → Deploy portfolio to GitHub Pages → Run workflow**, or push an update to `dist/` on `main`.
-4. In **Settings → Pages → Custom domain**, enter `audraevincent.com` and save it **before** changing the Namecheap DNS records. A custom Actions workflow uses this setting; a `CNAME` file alone does not configure the domain.
+- Public repository: [audraev/audrae-vincent-portfolio](https://github.com/audraev/audrae-vincent-portfolio).
+- Source: `main`, with **Settings → Pages → Source** set to **GitHub Actions**.
+- The [first Pages deployment](https://github.com/audraev/audrae-vincent-portfolio/actions/runs/40815079416) completed successfully on October 28, 2026.
+- **Settings → Pages → Custom domain** is already set to `audraevincent.com`. A custom Actions workflow uses this setting; a `CNAME` file alone does not configure the domain.
+
+The remaining setup is Namecheap DNS followed by the HTTPS check below. Updating files in `dist/` and pushing to `main` deploys future site changes automatically. Documentation-only commits do not trigger a deployment.
 
 ## Namecheap DNS
 
