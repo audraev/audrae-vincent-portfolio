@@ -30,6 +30,21 @@ function textElement(tag, value, className) {
   return element;
 }
 
+function createArrowIcon() {
+  const namespace = 'http://www.w3.org/2000/svg';
+  const icon = document.createElementNS(namespace, 'svg');
+  const attributes = {
+    class: 'icon icon-arrow-up-right', viewBox: '0 0 24 24', width: '24', height: '24',
+    fill: 'none', stroke: 'currentColor', 'stroke-width': '1.75',
+    'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'aria-hidden': 'true', focusable: 'false'
+  };
+  Object.entries(attributes).forEach(([name, value]) => icon.setAttribute(name, value));
+  const path = document.createElementNS(namespace, 'path');
+  path.setAttribute('d', 'M6 18 18 6M6 6h12v12');
+  icon.append(path);
+  return icon;
+}
+
 document.querySelectorAll('[data-project]').forEach(button => {
   button.addEventListener('click', () => {
     const project = projectNotes[button.dataset.project];
@@ -48,7 +63,8 @@ document.querySelectorAll('[data-project]').forEach(button => {
     const list = document.createElement('ul');
     project.features.forEach(feature => list.append(textElement('li', feature)));
     details.append(list);
-    const link = textElement('a', 'View source on GitHub ↗', 'button primary');
+    const link = textElement('a', 'View source on GitHub', 'button primary');
+    link.append(createArrowIcon());
     link.href = project.url;
     link.target = '_blank';
     link.rel = 'noopener noreferrer';
