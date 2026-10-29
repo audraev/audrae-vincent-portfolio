@@ -2,6 +2,10 @@
 
 A responsive, buildless personal portfolio. Public files live in `dist/`.
 
+## Hosting
+
+The primary address is `https://audraevincent.com/`. GitHub Pages publishes `dist/` automatically from `main` using `.github/workflows/deploy-pages.yml`. See [GITHUB-PAGES.md](GITHUB-PAGES.md) for GitHub settings, Namecheap DNS records, and HTTPS verification.
+
 ## Preview
 
 Run `node preview.mjs` and open http://127.0.0.1:4173.
