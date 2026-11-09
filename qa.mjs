@@ -42,6 +42,7 @@ try {
   async function check(name, expression) { const passed = await evaluate(expression); results.push({ name, passed }); if (!passed) throw new Error('Check failed: ' + name); }
   await check('Title and two real projects', `document.title.includes('Audrae Vincent') && document.querySelectorAll('.project').length === 2`);
   await check('Desktop has no horizontal overflow', 'document.documentElement.scrollWidth <= innerWidth');
+  await check('Fitness project card shows the current training tracker', `(async () => { const image = document.querySelector('.fitness-dashboard-shot'); await image.decode(); return image.naturalWidth === 1280 && image.src.includes('fitness-tracker.jpg') && document.querySelector('.fitness-preview').textContent.includes('fictional data'); })()`);
   await check('App filter', `document.querySelector('[data-filter="app"]').click(); document.querySelectorAll('.project:not([hidden])').length === 1 && !document.querySelector('[data-category="app"]').hidden`);
   await check('Website filter', `document.querySelector('[data-filter="website"]').click(); document.querySelectorAll('.project:not([hidden])').length === 1 && !document.querySelector('[data-category="website"]').hidden`);
   await check('Reset project filter', `document.querySelector('[data-filter="all"]').click(); document.querySelectorAll('.project:not([hidden])').length === 2`);
@@ -49,7 +50,7 @@ try {
     await check(project + ' detail and GitHub link', `document.querySelector('[data-project="${project}"]').click(); document.querySelector('dialog').open && document.querySelector('#dialog-content a').href.startsWith('https://github.com/audraev/')`);
     await evaluate('document.querySelector(".slide-image").decode()');
     const firstImage = await evaluate('document.querySelector(".slide-image").src');
-    const total = project === 'fitness' ? 3 : 4;
+    const total = project === 'fitness' ? 6 : 4;
     await check(project + ' starts with a loaded preview and one selected thumbnail', `document.querySelector('.slide-image').naturalWidth === 1280 && document.querySelector('.gallery-counter').textContent === '1 / ${total}' && document.querySelectorAll('.gallery-thumbnail[aria-pressed="true"]').length === 1`);
     await evaluate('document.querySelector(".gallery-controls").lastElementChild.click(); document.querySelector(".slide-image").decode()');
     await check(project + ' next slide changes the screenshot and caption', `document.querySelector('.slide-image').src !== ${JSON.stringify(firstImage)} && document.querySelector('.gallery-counter').textContent === '2 / ${total}' && document.querySelector('.slide-kicker').textContent.startsWith('SCREEN 02')`);
@@ -91,7 +92,7 @@ try {
       await send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x: bounds.x + bounds.width * .5, y }] });
       await send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x: bounds.x + bounds.width * .25, y }] });
       await send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
-      await check('Touch swipe advances the mobile gallery', 'document.querySelector(".gallery-counter").textContent === "2 / 3"');
+      await check('Touch swipe advances the mobile gallery', 'document.querySelector(".gallery-counter").textContent === "2 / 6"');
       await evaluate('document.querySelector("dialog").scrollTop = 0');
       const galleryShot = await send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: false });
       await writeFile(resolve(out, 'gallery-mobile.png'), Buffer.from(galleryShot.data, 'base64'));

@@ -2,14 +2,18 @@ const projectNotes = {
   fitness: {
     title: 'Fitness Vault',
     type: 'Fitness dashboard & application · In development',
-    description: 'A personal project for recording workouts and making training data easier to understand. The React interface brings workout summaries, weekly mileage, and training-load calculations into one dashboard.',
-    features: ['Dashboard totals for workouts, distance, training time, and running sessions.', 'Weekly mileage visualization and training-load analytics based on duration and intensity.', 'Workout-entry form that updates the current dashboard session.', 'Separate FastAPI backend with workout create, read, update, and delete endpoints, plus SQLAlchemy and PostgreSQL support.'],
-    note: 'The frontend currently uses sample data and session state. The API exists separately; persistent frontend-to-API integration is still in progress. Preview artwork uses illustrative sample values.',
+    description: 'A personal training app for building exercise habits and understanding progress. Set weekly targets, log strength and endurance sessions, time full workouts, and review activity across weekly and monthly calendars.',
+    features: ['Weekly and monthly consistency calendars, activity filters, and exercise habits with measurable targets.', 'A workout timer that continues across refreshes, with exercise logs and finished-workout history.', 'Sets, reps, weight, distance, elevation, and notes, with draft logs kept separate from confirmed progress.', 'Next-week insights based on confirmed sessions, current targets, and a chosen progression increment.', 'FastAPI and PostgreSQL persistence for local training profiles, exercise logs, and timed workouts.', 'A separate overview for workout totals, weekly mileage, recent activity, and training-load analytics.'],
+    note: 'In active development. Local profiles are not signed-in accounts, and the tracker and overview keep separate logs. Screenshots use fictional data in an isolated preview of the November 8, 2026 working version.',
     tags: ['React', 'TypeScript', 'Vite', 'FastAPI', 'SQLAlchemy', 'PostgreSQL'],
+    imageVersion: 'fitness-tracker-20261108',
     slides: [
-      { image: 'fitness-overview.jpg', title: 'Training at a glance', description: 'The overview brings total workouts, distance, time, running sessions, and training load into one dashboard.', alt: 'Fitness Vault training overview with summary cards for four sample workouts, 11.3 miles, training time, and training load.' },
-      { image: 'fitness-summary.jpg', title: 'Understand the work behind the numbers', description: 'Training summaries combine mileage, time, session counts, and a breakdown of workout types. The current preview uses a small sample dataset.', alt: 'Fitness Vault training summary and a breakdown of running, gym, and soccer sessions.' },
-      { image: 'fitness-analytics.jpg', title: 'Follow training volume and recent activity', description: 'Weekly mileage turns recorded distance into a chart, while recent workout cards keep duration, intensity, distance, and pace together.', alt: 'A weekly mileage chart above Fitness Vault’s recent workout list with sample running and gym sessions.' }
+      { image: 'fitness-tracker.jpg', title: 'Build a consistent training routine', description: 'The new training tracker brings local profiles, weekly and monthly views, activity filters, and workout timing into one place.', alt: 'Fitness Vault training tracker with a sample local profile, weekly and monthly controls, activity filter, and workout timer.' },
+      { image: 'fitness-timer.jpg', title: 'Track the whole workout', description: 'Time a full visit, including rest between sets, and log exercises while the timer runs. Finished workout time and gym time are tracked separately from exercise minutes.', alt: 'A sample Sunday strength workout in progress, showing a 42-minute timer, exercise logs, and finished-workout time totals.' },
+      { image: 'fitness-session.jpg', title: 'Record what you actually completed', description: 'Log individual sets, reps, weight, and notes. Save a draft as you go, then confirm the completed results so they count toward progress.', alt: 'Fitness Vault exercise log form with sample dumbbell-row sets, reps, weight, notes, and a completed-results confirmation checkbox.' },
+      { image: 'fitness-calendar.jpg', title: 'See consistency across the month', description: 'Confirmed sessions fill the calendar. Select a day to inspect its logs, switch between weekly and monthly views, or filter by activity.', alt: 'A November 2026 consistency calendar with confirmed sample training sessions marked in green.' },
+      { image: 'fitness-progress.jpg', title: 'Give every exercise a measurable target', description: 'Set weekly frequency and strength or endurance targets, then compare confirmed sessions with the plan. Next-week insights use those results and your chosen progression increment.', alt: 'Exercise habit cards showing sample goblet squat, dumbbell row, and running targets with weekly progress bars.' },
+      { image: 'fitness-overview.jpg', title: 'Keep the broader training picture in view', description: 'The separate overview connects saved workouts with distance, training time, running sessions, training load, and weekly mileage.', alt: 'Updated Fitness Vault overview with fictional workout totals, distance, training time, running sessions, and training-load summaries.' }
     ],
     url: 'https://github.com/audraev/fitness-dashboard'
   },
@@ -124,7 +128,7 @@ function createProjectGallery(project) {
     button.className = 'gallery-thumbnail';
     button.setAttribute('aria-label', `Show slide ${index + 1}: ${slide.title}`);
     const thumbnail = document.createElement('img');
-    thumbnail.src = `assets/projects/${slide.image}?v=clean-framing-2`;
+    thumbnail.src = `assets/projects/${slide.image}?v=${project.imageVersion || 'clean-framing-2'}`;
     thumbnail.alt = '';
     thumbnail.width = 128;
     thumbnail.height = 80;
@@ -140,7 +144,7 @@ function createProjectGallery(project) {
     const slide = project.slides[current];
     error.hidden = true;
     image.hidden = false;
-    image.src = `assets/projects/${slide.image}?v=clean-framing-2`;
+    image.src = `assets/projects/${slide.image}?v=${project.imageVersion || 'clean-framing-2'}`;
     image.alt = slide.alt;
     number.textContent = `SCREEN ${String(current + 1).padStart(2, '0')} / ${String(project.slides.length).padStart(2, '0')}`;
     title.textContent = slide.title;

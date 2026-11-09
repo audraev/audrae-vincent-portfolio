@@ -9,3 +9,9 @@
 
 .artheon-wordmark{display:block;width:108px;max-width:44%;height:auto;object-fit:contain;flex-shrink:0}
 .icon{display:inline-block;width:1em;height:1em;flex-shrink:0;vertical-align:-.125em}
+
+.fitness-dashboard-shot{position:absolute;top:52px;left:30px;width:calc(100% - 60px);height:auto;border:1px solid #263b55;border-radius:7px;transform:rotate(-2deg);box-shadow:0 12px 30px #283e3230;pointer-events:none}
+@media(max-width:370px){.fitness-dashboard-shot{left:20px;width:calc(100% - 40px)}}
+
+/* Chart values stay in CSS so the content policy can block inline styles. */
+.mini-chart i:nth-child(1){--bar:32%}.mini-chart i:nth-child(2){--bar:51%}.mini-chart i:nth-child(3){--bar:43%}.mini-chart i:nth-child(4){--bar:68%}.mini-chart i:nth-child(5){--bar:59%}.mini-chart i:nth-child(6){--bar:87%}
